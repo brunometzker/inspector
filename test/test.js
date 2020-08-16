@@ -1,7 +1,7 @@
 const inspector = require('../index');
 const { expect } = require('chai');
 
-describe('inspector Suite', () => {
+describe('Functions', () => {
     describe('isOfType', () => {
         it('should return true when value is of supplied type', () => {
             const type = 'string';
@@ -94,6 +94,43 @@ describe('inspector Suite', () => {
             const pattern = undefined;
 
             expect(inspector.stringMatches(value, pattern)).to.be.false;
+        });
+    });
+
+    describe('isObjectOfType', () => {
+        it('should return false when value is a built in type other than object', () => {
+            const value = 'some string';
+            const type = String;
+            
+            expect(inspector.isObjectOfType(value, type)).to.be.false;
+        });
+
+        it('should return false when value is null', () => {
+            const value = null;
+            const type = Array;
+
+            expect(inspector.isObjectOfType(value, type)).to.be.false;
+        });
+
+        it('should return false when value is undefined', () => {
+            const value = undefined;
+            const type = Array;
+
+            expect(inspector.isObjectOfType(value, type)).to.be.false;
+        });
+
+        it('should return false when value is an object but not an instance of provided type', () => {
+            const value = [];
+            const type = Promise;
+
+            expect(inspector.isObjectOfType(value, type)).to.be.false;
+        });
+
+        it('should return true when value is an object and instance of the provided type', () => {
+            const value = [];
+            const type = Array;
+
+            expect(inspector.isObjectOfType(value, type)).to.be.true;
         });
     });
 });

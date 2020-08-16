@@ -10,5 +10,10 @@ const stringMatches = (value, pattern) => {
     return pattern.test(value);
 }
 
+const isObjectOfType = (value, type) => {
+    return isOfType(value, 'object') && value instanceof type;
+}
+
 module.exports.isOfType = isOfType;
 module.exports.stringMatches = stringMatches;
+module.exports.isObjectOfType = isObjectOfType;
