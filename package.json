@@ -1,6 +1,5 @@
 {
   "name": "inspector",
-  "version": "0.0.0",
   "description": "Utility library with functions to assert that input match a given desired criteria",
   "main": "index.js",
   "scripts": {
